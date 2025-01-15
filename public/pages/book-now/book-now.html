@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/global.css" />
+    <link rel="stylesheet" href="/pages/book-now/book-now.css" />
+    <script src="/nav/nav.js" defer type="module"></script>
+    <script src="/pages/book-now/book-now.js" defer type="module"></script>
+    <title>Book a Table | Gordon Ramsay</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="top"></section>
+      <section class="content">
+        <div>
+          <h3>Book a Table at Gordon Ramsay Bar & Grill</h3>
+          <p>
+            For groups sized 1-12 and for Butcher's Block bookings, please
+            complete the booking form below. Should there be no availability on
+            the day you're looking to book, please email our Events team at
+            <span>events@gordonramsay.com</span> .
+          </p>
+        </div>
+        <p>
+          Alternatively, for Group Reservations of 13+, please complete the
+          below enquiry form.
+        </p>
+        <div class="info">
+          <p>
+            Please note that reservations are available up to 12 months in
+            advance.
+          </p>
+          <p>To check T&C's, please press <span>here</span>.</p>
+        </div>
+      </section>
+      <section class="book">
+        <div class="small">
+          <div class="layout">
+            <div class="content">
+              <div class="line"></div>
+              <h3>Book a Table 1-12 People</h3>
+              <p>Butcher's Block 6-15 People</p>
+              <div class="line"></div>
+            </div>
+          </div>
+          <div class="from">
+            <form method="post" id="individual">
+              <input type="date" name="date" id="date" />
+              <input type="time" name="time" id="time" />
+              <select name="size" id="size">
+                <option value="0">*Party size</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <button type="submit">Book now</button>
+            </form>
+          </div>
+        </div>
+        <div class="group">
+          <div class="layout">
+            <div class="content">
+              <div class="line"></div>
+              <h3>Group booking</h3>
+              <p>13+ people</p>
+              <div class="line"></div>
+            </div>
+          </div>
+          <div class="from">
+            <form method="post" id="group">
+              <input
+                type="text"
+                name="first"
+                id="first-id"
+                placeholder="*First name"
+              />
+              <input
+                type="text"
+                name="last"
+                id="last-id"
+                placeholder="*Last name"
+              />
+              <input
+                type="email"
+                name="email"
+                id="email-id"
+                placeholder="*Email"
+              />
+              <input
+                type="tel"
+                name="phone"
+                id="phone-id"
+                placeholder="07400123456"
+              />
+              <input type="date" name="date" id="date-id" />
+              <input type="time" name="time" id="time-id" />
+              <select name="size" id="size-id" class="custom-select">
+                <option value="0">*Party size</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <div class="chekboxes">
+                <div class="marketing">
+                  <label for="marketing">
+                    <input type="checkbox" id="marketing" name="marketing" />
+                    <div id="checkbox-one"></div>
+                    <p>
+                      Yes I would like to receive latest marketing information
+                      by email from Private Dining and Events by Gordon Ramsay
+                    </p>
+                  </label>
+                </div>
+                <div class="policy">
+                  <label for="privacy">
+                    <input type="checkbox" id="privacy" name="privacy" />
+                    <div id="checkbox-two"></div>
+                    <div class="content">
+                      <div class="top">
+                        <p>
+                          Yes I would like to receive the latest marketing
+                          information by email from Gordon Ramsay Restaurants,
+                          <span><a href="">about all our restaurants</a></span>
+                        </p>
+                        <p>
+                          For more information please see our
+                          <span><a href="">privacy policy</a></span>
+                        </p>
+                      </div>
+                      <p>
+                        We will of course keep your data safe and secure and if
+                        you change your mind you can unsubscribe at any time on
+                        any marketing email we send or email us at
+                        guestrelations@gordonramsay.com
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <button class="submit" type="submit">Enquire now</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

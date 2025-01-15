@@ -1,0 +1,228 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+
+    background-color: var(--brown-lightest);
+
+    h3,
+    p {
+        color: var(--text-brown);
+    }
+
+    p {
+        line-height: 22px;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            p span {
+                font-weight: 700;
+            }
+        }
+
+
+        div.info {
+            p {
+
+                font-style: italic;
+                letter-spacing: .5px;
+
+            }
+        }
+    }
+
+    section.top {
+        height: 420px;
+        background-image: url("/assets/book/main.jpg");
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+    }
+
+    section.book {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        /* align-items: center; */
+        /* justify-content: center; */
+
+
+
+        .small,
+        .group {
+            display: flex;
+            /* align-items: center; */
+            /* justify-content: center; */
+
+
+
+            p,
+            h3 {
+                color: white;
+            }
+
+            .layout {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-size: cover;
+                min-height: 240px;
+                width: 100%;
+
+                .content {
+                    position: absolute;
+                    inset: 0;
+                    background-color: #00000035;
+
+                }
+            }
+
+        }
+
+        .small {
+            .layout {
+
+                background-image: url("../../assets/book/compressed/small.jpg");
+            }
+        }
+
+
+        .group {
+            .layout {
+                background-image: url("../../assets/book/compressed/goup.jpg");
+            }
+        }
+
+        .content {
+            align-items: center;
+            justify-content: center;
+            /* padding: 1rem; */
+        }
+
+        .line {
+            height: 6px;
+            width: 80%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: .95rem;
+
+
+            margin-top: 1rem;
+
+
+            input,
+            select,
+            button {
+                font-size: 17px;
+                padding: .75rem;
+            }
+
+    
+
+            button {
+             
+                text-align: center;
+                background-color: var(--brown-darker);
+                border: 1px solid white;
+                color: white;
+                font-size: 18px;
+                font-weight: 700;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+
+            .chekboxes {
+                margin: 1rem 0;
+                display: flex;
+                gap: 1rem;
+
+                .policy,
+                .marketing {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    gap: .5rem;
+
+                    background-color: white;
+                    padding: 1rem;
+
+                    label {
+                        text-align: start;
+
+                        p {
+                            line-height: 24px !important;
+                            color: var(--text-brown) !important;
+                        }
+
+                    }
+                }
+
+
+                label {
+                    display: flex;
+                    gap: 1rem;
+
+
+                    input {
+                        display: none;
+                    }
+
+                    #checkbox-one,
+                    #checkbox-two {
+                        height: 20px;
+                        aspect-ratio: 1;
+                        border: 3px solid var(--border-color-darker);
+                        margin-top: .25rem;
+
+                        transition: all .35s ease-in-out;
+                    }
+
+                    #checkbox-one.filled,
+                    #checkbox-two.filled {
+                        background-color: var(--border-color-darker) !important;
+
+                    }
+
+
+                    .policy {
+
+                        .content {
+
+                            .top {
+                                gap: 0;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        @media screen and (max-width: 600px) {
+            grid-template-columns: 1fr;
+
+        }
+    }
+
+}

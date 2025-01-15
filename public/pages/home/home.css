@@ -1,0 +1,229 @@
+body {
+    background-color: var(--brown-lightest);
+}
+
+section {
+    padding-bottom: 2rem;
+
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+section.one {
+
+    h3 {
+        margin: 2rem;
+        text-align: center;
+    }
+
+    .container {
+        position: relative;
+        display: flex;
+        /* flex-direction: column; */
+        overflow: hidden;
+        height: 450px;
+
+
+
+        .slide {
+            position: absolute;
+
+            height: 450px;
+            inset: 0;
+            flex-direction: column;
+            /* check here */
+            display: flex;
+            display: none;
+
+            gap: 1.2rem;
+
+
+            align-items: center;
+            justify-content: center;
+
+
+            background-size: cover;
+
+            color: white;
+
+            transition: all .2s ease-in-out;
+
+
+
+            button {
+                background-color: var(--button-color);
+                padding: 1rem 2rem;
+                font-size: 20px;
+                line-height: 22px;
+                font-weight: 800;
+
+                color: white;
+            }
+
+            @media screen and (max-width: 600px) {
+                padding: 4rem;
+                text-align: center;
+
+                gap: 1rem;
+
+                h2 {
+                    font-size: 25px;
+                }
+
+                h3 {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .slide.curr {
+            display: flex;
+
+        }
+
+        .slide.prev {
+            display: flex;
+            transform: translate(-100%);
+        }
+
+        .slide.next {
+            display: flex;
+            transform: translate(100%);
+
+        }
+
+        .buttons {
+
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            z-index: 1;
+
+            background-color: var(--brown-transparent);
+            padding: .15rem .5rem;
+            border-radius: 15px;
+
+            border: 1px solid;
+
+            gap: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button {
+                background-color: var(--brown-lighter);
+
+                height: 17px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+
+                transition: all .14s ease-in;
+            }
+
+            button.prev,
+            button.next {
+                height: 19px;
+            }
+
+            button.curr {
+                height: 30px;
+                border: 2px solid black;
+                outline: 1px solid white;
+                background-color: var(--brown-lightest);
+
+
+
+            }
+
+            button.prev {}
+
+            button.next {}
+
+
+        }
+
+        .back,
+        .forward {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50px;
+            cursor: pointer;
+
+            z-index: 1;
+
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+        }
+
+        .back {
+            left: 10px;
+        }
+
+        .forward {
+            right: 10px;
+            transform: rotate(180deg) translateY(50%);
+        }
+
+    }
+}
+
+section.two {
+    max-width: var(--container-width);
+    margin: 1rem auto;
+}
+
+section.two {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+section.three {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1rem;
+    overflow: hidden;
+    max-width: var(--container-width);
+    margin: 0 auto;
+
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .action {
+        background-color: var(--brown-lighter);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        color: white;
+
+        .line {
+            height: 4px;
+            width: 80%;
+        }
+
+
+    }
+
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: .25rem;
+
+        .action {
+
+            min-height: 220px;
+        }
+
+    }
+}
