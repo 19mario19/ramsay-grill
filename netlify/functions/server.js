@@ -6,7 +6,6 @@ const app = express()
 
 app.use(express.static("public"))
 
-// creating the routes
 for (let i = 0; i < routes.length; i++) {
   const route = routes[i]
 
@@ -18,19 +17,19 @@ for (let i = 0; i < routes.length; i++) {
 
   app.get(route.link, (_, res) => {
     res.redirect(
-      `pages/${route.folderBase.toLowerCase()}/${route.folderBase}.html`,
+      `/pages/${route.folderBase.toLowerCase()}/${route.folderBase}.html`,
     )
   })
 
   if (route.children && route.children.length > 0) {
     for (let j = 0; j < route.children.length; j++) {
       const child = route.children[j]
-      const link = route.link + child.link + "/"
+      const link = route.link + child.link
 
       app.get(link, (_, res) => {
         let childFolderBase = child.folderBase.toLowerCase()
         res.redirect(
-          `pages/${route.folderBase.toLowerCase()}/${childFolderBase}/${childFolderBase}.html`,
+          `/pages/${route.folderBase.toLowerCase()}/${childFolderBase}/${childFolderBase}.html`,
         )
       })
     }

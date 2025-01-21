@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--brown-lightest);
+
+    h3,
+    p {
+        color: var(--text-brown);
+    }
+
+    p {
+        line-height: 22px;
+    }
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem;
+
+
+        span {
+            font-weight: bold;
+        }
+
+        button {
+            align-self: center;
+        }
+
+        @media screen and (max-width: 600px) {
+            padding: 2rem 1rem;
+        }
+    }
+
+    section.images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        .first,
+        .second {
+            background-size: cover;
+            height: 300px;
+        }
+
+        .first {
+            background-image: url("/assets/bar-grill/butcher-block/1.png");
+        }
+
+        .second {
+            background-image: url("/assets/bar-grill/butcher-block/2.png");
+        }
+
+        @media screen and (max-width: 600px) {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+
+    section.top {
+        background-image: url("/assets/bar-grill/butcher-block/main.png");
+        height: 450px;
+        background-size: cover;
+    }
+
+    section.content {
+        text-align: center;
+    }
+}
