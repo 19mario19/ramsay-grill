@@ -1,4 +1,3 @@
-import slider from "../../../slider/slider.js"
 let list = [
   {
     fullSize: "/assets/bar-grill/gallery/1.jpg",
@@ -53,6 +52,13 @@ let list = [
     smallSize: "/assets/bar-grill/gallery/small/13.jpg",
   },
 ]
+// preload images
+for (let i = 0; i < list.length; i++) {
+  const item = list[i]
+
+  let img = new Image()
+  img.src = item.fullSize
+}
 // to be modified list
 let modList = [...list]
 
