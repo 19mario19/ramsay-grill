@@ -23,16 +23,26 @@
         width: 100%;
 
 
+        padding: 1rem;
+
         .content {
+            position: relative;
+
+
             width: 90%;
             overflow: hidden;
+            height: 70px;
 
             ul {
+                position: absolute;
+                inset: 0;
+
                 display: flex;
                 gap: 1rem;
                 align-items: center;
                 justify-content: start;
-                padding: 1rem;
+
+
                 z-index: 999;
 
 
@@ -48,18 +58,22 @@
 
                 }
 
-                /* li {
-                    display: none;
-                    } */
+                li {
+                 
+                    display: block;
+                    transition: all .3s ease-in-out;
+                }
 
-                li.visible,
+
+
+              
+
                 li.active {
                     display: block;
-                }
-
-                li.active {
                     opacity: .26;
                 }
+
+
             }
         }
 

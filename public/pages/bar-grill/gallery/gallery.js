@@ -1,4 +1,5 @@
-const list = [
+import slider from "../../../slider/slider.js"
+let list = [
   {
     fullSize: "/assets/bar-grill/gallery/1.jpg",
     smallSize: "/assets/bar-grill/gallery/small/1.jpg",
@@ -52,13 +53,13 @@ const list = [
     smallSize: "/assets/bar-grill/gallery/small/13.jpg",
   },
 ]
+// to be modified list
+let modList = [...list]
 
-// initial load
-let active = { value: 0 }
-let visibleItems = 7
+const indexRef = { value: 0 }
 
 const display = document.querySelector(".display")
-updateActiveImage(active.value)
+updateActiveImage(modList[0])
 
 const controll = document.querySelector(".controll")
 
@@ -77,57 +78,76 @@ content.className = "content"
 const ul = document.createElement("ul")
 content.appendChild(ul)
 
+let listElements = []
+recreateList()
+
 controll.appendChild(content)
 // append last
 controll.appendChild(forward)
 
-let listElements = []
-
-for (let i = 0; i < list.length; i++) {
-  const item = list[i]
-
-  const li = document.createElement("li")
-  if (i === 0) li.classList.add("active")
-
-  listElements.push(li)
-  ul.appendChild(li)
-
-  /**
-   * @type {HTMLImageElement}
-   */
-  const img = document.createElement("img")
-  img.src = item.smallSize
-  li.appendChild(img)
-
-  li.addEventListener("click", () => {
-    active.value = i
-    updateActiveImage(active.value)
-    removeClasses()
-    li.classList.add("active")
-  })
-}
-
 forward.addEventListener("click", () => {
-  active.value = (active.value + 1) % listElements.length
-  updateActiveImage(active.value)
-  removeClasses()
-  listElements[active.value].classList.add("active")
+  recreateList()
+  updateActiveImage()
+  listElements[0].classList.add("active")
+
+  renderList()
 })
 backward.addEventListener("click", () => {
-  active.value = (active.value - 1 + listElements.length) % listElements.length
-  removeClasses()
-  updateActiveImage(active.value)
-  listElements[active.value].classList.add("active")
+  recreateList()
+  updateActiveImage()
+  listElements[0].classList.add("active")
+  renderList()
 })
 
-function updateActiveImage(index) {
-  display.style.backgroundImage = `url(${list[index].fullSize})`
+function renderList() {
+  modList.push(modList[0])
+  modList.splice(modList[0], 1)
 }
 
-function removeClasses() {
-  for (let i = 0; i < listElements.length; i++) {
-    const element = listElements[i]
+function recreateList() {
+  // reset list
+  listElements = []
+  ul.innerHTML = ""
 
-    element.classList.remove("active")
+  // recreate it
+  for (let i = 0; i < modList.length; i++) {
+    const item = modList[i]
+
+    const li = document.createElement("li")
+    if (i === 0) li.classList.add("active")
+
+    listElements.push(li)
+    ul.appendChild(li)
+
+    /**
+     * @type {HTMLImageElement}
+     */
+    const img = document.createElement("img")
+    img.src = item.smallSize
+    li.appendChild(img)
+
+    li.addEventListener("click", () => {
+      updateActiveImage()
+      li.classList.add("active")
+
+      indexRef.value = i
+
+      modifyListOnItem()
+
+      updateActiveImage()
+    })
   }
+}
+
+function modifyListOnItem() {
+  // take the index ref plus whole array to the end and move to the start
+  let newList = modList.splice(indexRef.value)
+
+  modList.unshift(...newList)
+
+  recreateList()
+}
+
+function updateActiveImage() {
+  display.style.backgroundImage = `url(${modList[0].fullSize})`
 }
