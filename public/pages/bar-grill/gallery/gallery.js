@@ -1,3 +1,5 @@
+import slider from "../../../slider/slider.js"
+
 let list = [
   {
     fullSize: "/assets/bar-grill/gallery/1.jpg",
@@ -92,22 +94,41 @@ controll.appendChild(content)
 controll.appendChild(forward)
 
 forward.addEventListener("click", () => {
-  recreateList()
-  updateActiveImage()
-  listElements[0].classList.add("active")
-
   renderList()
 })
 backward.addEventListener("click", () => {
-  recreateList()
-  updateActiveImage()
-  listElements[0].classList.add("active")
-  renderList()
+  renderList(false)
 })
 
-function renderList() {
-  modList.push(modList[0])
-  modList.splice(modList[0], 1)
+/**
+ * @param {boolean} [forward=true]
+ */
+function renderList(forward = true) {
+  const { prev, curr, next } = slider(modList, 0)
+
+  const array = [
+    { name: "prev", element: prev.fullSize },
+    { name: "curr", element: curr.fullSize },
+    { name: "next", element: next.fullSize },
+  ]
+
+  console.table(array)
+
+  if (forward) {
+    console.log("Forwards ")
+    modList.push(modList[0])
+    modList.shift()
+  } else {
+    const lastElement = modList[modList.length - 1]
+    console.log("Backwards")
+    console.log("Last element: ", lastElement)
+    modList = [lastElement, ...modList]
+    modList.pop()
+  }
+
+  listElements[0].classList.add("active")
+  recreateList()
+  updateActiveImage()
 }
 
 function recreateList() {
@@ -124,7 +145,6 @@ function recreateList() {
 
     listElements.push(li)
     ul.appendChild(li)
-
     /**
      * @type {HTMLImageElement}
      */
@@ -139,7 +159,6 @@ function recreateList() {
       indexRef.value = i
 
       modifyListOnItem()
-
       updateActiveImage()
     })
   }
