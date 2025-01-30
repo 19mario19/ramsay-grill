@@ -112,6 +112,7 @@ html {
 
 body {
     line-height: 1;
+    background-color: var(--brown-lightest);
 
 }
 
@@ -210,6 +211,8 @@ h4,
 h5 {
     font-weight: 700;
 }
+
+
 
 h1 {}
 

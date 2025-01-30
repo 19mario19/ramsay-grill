@@ -49,6 +49,10 @@
         background-size: cover;
         padding: 0;
         margin: 0;
+
+        @media screen and (max-width: 600px) {
+            height: 200px;
+        }
     }
 
     section.book {
@@ -133,10 +137,10 @@
                 padding: .75rem;
             }
 
-    
+
 
             button {
-             
+
                 text-align: center;
                 background-color: var(--brown-darker);
                 border: 1px solid white;

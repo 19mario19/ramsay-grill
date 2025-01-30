@@ -112,16 +112,11 @@ function renderList(forward = true) {
     { name: "next", element: next.fullSize },
   ]
 
-  console.table(array)
-
   if (forward) {
-    console.log("Forwards ")
     modList.push(modList[0])
     modList.shift()
   } else {
     const lastElement = modList[modList.length - 1]
-    console.log("Backwards")
-    console.log("Last element: ", lastElement)
     modList = [lastElement, ...modList]
     modList.pop()
   }

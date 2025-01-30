@@ -1,0 +1,21 @@
+.container {
+    background-color: var(--brown-lightest);
+    text-align: center;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        gap: .75rem;
+
+    }
+
+    iframe {
+        height: 560px;
+        width: 100%;
+    }
+}

@@ -62,6 +62,10 @@
         background-image: url("/assets/bar-grill/butcher-block/main.png");
         height: 450px;
         background-size: cover;
+
+        @media screen and (max-width: 600px) {
+            height: 200px;
+        }
     }
 
     section.content {

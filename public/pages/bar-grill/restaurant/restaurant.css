@@ -58,6 +58,10 @@
         background-image: url("/assets/bar-grill/restaurant/main.png");
         height: 450px;
         background-size: cover;
+
+        @media screen and (max-width: 600px) {
+            height: 200px;
+        }
     }
 
     section.content {
