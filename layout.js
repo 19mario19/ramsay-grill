@@ -1,4 +1,4 @@
-function Layout(route, parentPath = "") {
+function Layout(route, parentPath = "", template = "") {
   const fullPath = parentPath
     ? `${parentPath}/${route.folderBase}`
     : route.folderBase
@@ -16,7 +16,7 @@ function Layout(route, parentPath = "") {
     <title>${route.name}</title>
 </head>
 <body>
-    
+    ${template}
 </body>
 </html>
 `

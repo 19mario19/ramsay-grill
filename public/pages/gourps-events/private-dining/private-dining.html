@@ -4,13 +4,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/pages/gourps-events/private-dining/private-dining.css" >
     <link rel="stylesheet" href="/global.css" />
+    <link rel="stylesheet" href="/pages/gourps-events/private-dining/private-dining.css" >
     <script src="/pages/gourps-events/private-dining/private-dining.js" type="module" defer></script>
     <script src="/nav/nav.js" type="module" defer></script>
     <title>Private Dining</title>
 </head>
 <body>
-    
+    <div class="container">
+  <section class="top"></section>
+  <section class="content">
+    <h3>Groups, Private Dining & Events at Bar & Grill - Mayfair</h3>
+    <div class="info">
+      <p>
+        Discover the perfect venue for your next event at Bar & Grill Mayfair.
+        Our relaxed yet stylish décor and diverse group dining options,
+        including the Butcher's Block private table and exclusive hire of the
+        restaurant, cater to every occasion.
+      </p>
+      <p>
+        Whether it's intimate celebration or a business meeting, our range of
+        Group menus are made to suit different party sizes and tastes.
+      </p>
+      <p>
+        <span>Groups and Events </span>menus are also available in our
+        <span> Private Dining </span>space in Lucky Cat Mayfair.
+      </p>
+      <p>
+        Speak to the Events team to discuss your requirements – call 020 7592
+        1373 or complete the form below to submit an enquiry. Alternatively, you
+        can email our team at<span> events@gordonramsay.com. </span>
+      </p>
+    </div>
+    <div class="capacity">
+      <p>Capacity:</p>
+      <p>Exclusive hire - seated 50, standing 100</p>
+      <p>Group dining - seated 20</p>
+      <p>Butcher's Block - seated 15</p>
+    </div>
+    <p>Click <span>here</span> to take a tour</p>
+    <a href="/">
+      <button class="btn">VIEW BROCHURE</button>
+    </a>
+  </section>
+  <section class="form-wrapper">
+    <div class="title">
+      <div class="line"></div>
+      <h2>Complete Our Groups & Events Enquiry Form</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="form">
+      <form method="post" id="form">
+        <div class="forms">
+          <div class="contact">
+            <input type="text" id="first-id" placeholder="*First name" />
+            <input type="text" id="last-id" placeholder="*Last name" />
+            <input type="email" id="email-id" placeholder="*Email address" />
+            <input type="text" id="company-id" placeholder="Company" />
+            <input type="text" id="job-title" placeholder="Job title" />
+            <input type="tel" id="phone-id" placeholder="*Phone number" />
+          </div>
+          <div class="details">
+            <select name="occasion" id="occasion">
+              <option value="">*Occasion</option>
+              <option value="wedding">Wedding</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="birthday">Birthday</option>
+              <option value="work-party">Work Party</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch Celebration</option>
+              <option value="dinner">Dinner</option>
+              <option value="meeting">Meeting</option>
+              <option value="masterclass">Masterclass</option>
+              <option value="other">Other</option>
+            </select>
+            <input type="date" id="date-id" />
+            <input type="time" id="time-id" />
+            <select name="size" id="size-id" class="custom-select">
+              <option value="0">Party size</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <textarea
+              name="note"
+              id="note-id"
+              placeholder="Note (Please specify which area of the venue is required)"
+            ></textarea>
+            <div class="chekboxes">
+              <div class="marketing">
+                <label for="marketing">
+                  <input type="checkbox" id="marketing" name="marketing" />
+                  <div id="checkbox-one"></div>
+                  <p>
+                    Yes, I would like to receive the latest marketing
+                    information by email from Private Dining and Events by
+                    Gordon Ramsay.
+                  </p>
+                </label>
+              </div>
+              <div class="policy">
+                <label for="privacy">
+                  <input type="checkbox" id="privacy" name="privacy" />
+                  <div id="checkbox-two"></div>
+                  <div class="content">
+                    <div class="top">
+                      <p>
+                        Yes, I would like to receive the latest marketing
+                        information by email from Gordon Ramsay Restaurants,
+                        <span><a href="#">about all our restaurants</a></span>
+                      </p>
+                      <p>
+                        For more information, please see our
+                        <span><a href="#">privacy policy</a></span>
+                      </p>
+                    </div>
+                    <p>
+                      We will, of course, keep your data safe and secure. If you
+                      change your mind, you can unsubscribe at any time from any
+                      marketing email we send or email us at
+                      guestrelations@gordonramsay.com.
+                    </p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn">Enquire now</button>
+      </form>
+    </div>
+  </section>
+  <section class="dining">
+    <div class="type">
+      <div class="group component">
+        <img src="/assets/events/group.png" alt="" />
+        <h3>Group Dining</h3>
+        <p>
+          Bar & Grill - Mayfair has the flexibility to hold groups of up to 20
+          people.
+        </p>
+        <a href="#">
+          <button class="btn">Enquire now</button>
+        </a>
+      </div>
+      <div class="private component">
+        <img src="/assets/events/private.jpg" alt="" />
+        <h3>Private Dining</h3>
+        <p>
+          Experience our Butcher's Block and dine with a group of up to 15
+          guests. This private dining table is ideal for intimate celebratory
+          occasions and corporate meetings.
+        </p>
+        <p>Our dedicated Events team is on hand to bring your event to life.</p>
+        <a href="#">
+          <button class="btn">Enquire now</button>
+        </a>
+      </div>
+    </div>
+    <div class="exclusive component">
+      <img src="/assets/events/exclusive.png" alt="" />
+      <h3>Exclusive Hire</h3>
+      <p>
+        For the ultimate event, Bar & Grill - Mayfair can accommodate up to 50
+        people seated or 100 standing.
+      </p>
+      <a href="#">
+        <button class="btn">Enquire now</button>
+      </a>
+    </div>
+  </section>
+</div>
+
 </body>
 </html>
