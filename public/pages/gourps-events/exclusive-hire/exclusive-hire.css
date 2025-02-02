@@ -2,7 +2,7 @@
     background-color: var(--brown-lightest);
 
     section.top {
-        background-image: url("/assets/group-events/main.png");
+        background-image: url("/assets/bar-grill/dining/exclusive/main.png");
         height: 450px;
         background-size: cover;
 
@@ -18,6 +18,10 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
+
+        .info {
+            margin-bottom: 2rem;
+        }
 
         div {
             display: flex;

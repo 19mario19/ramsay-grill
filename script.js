@@ -22,6 +22,7 @@ const routes = [
     name: "@Bar & Grill - Mayfair",
     folderBase: "bar-grill",
     link: "/at-bar-and-grill-mayfair",
+    template: "/templates/gallery",
     children: [
       {
         name: "Restaurant",
@@ -135,7 +136,10 @@ async function createFolderPath(routes, rootPath = "") {
               "utf-8",
             )
           }
-          await fs.writeFile(fileName + ".html", Layout(route, template ?? ""))
+          await fs.writeFile(
+            fileName + ".html",
+            Layout(route, "", template ?? ""),
+          )
         }
 
         if (!(await checkFileExists(fileName + ".js"))) {
@@ -152,7 +156,7 @@ async function createFolderPath(routes, rootPath = "") {
           if (parentTemplate) {
             const templateName = parentTemplate.split("/")[2]
             const style = await fs.readFile(
-              "public" + parentTemplate + "/" + templateName + ".js",
+              "public" + parentTemplate + "/" + templateName + ".css",
             )
             await fs.writeFile(fileName + ".css", style)
           } else await fs.writeFile(fileName + ".css", "")
