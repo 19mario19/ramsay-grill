@@ -56,8 +56,8 @@ section.one {
             transition: all .2s ease-in-out;
 
 
-            background-size: cover;
             object-fit: cover;
+            /* background-size: 100%; */
 
 
             @media screen and (max-width: 600px) {
@@ -196,19 +196,7 @@ section.dining {
 
     }
 
-    .bottom {
-        grid-template-columns: repeat(2, 1fr);
 
-
-        .component {
-            gap: 2rem;
-
-            img {
-                height: 200px;
-                object-fit: cover;
-            }
-        }
-    }
 
     .component {
         display: flex;
@@ -226,6 +214,28 @@ section.dining {
 
         img {
             width: 100%;
+            height: 180px;
+            object-fit: cover;
+
+        }
+    }
+
+    .bottom {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
+
+
+        .component {
+            gap: 2rem;
+
+            img {
+                height: 250px;
+            }
+
+        }
+
+        @media screen and (max-width: 600px) {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -233,5 +243,10 @@ section.dining {
         padding: .5rem;
         margin: 0;
         margin-bottom: 2rem;
+
+        img {
+            width: 100vh;
+            height: 200px;
+        }
     }
 }

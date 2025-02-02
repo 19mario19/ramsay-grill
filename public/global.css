@@ -264,6 +264,14 @@ button.btn {
     font-weight: 800;
 
     color: white;
+
+    transition: all .25s ease-in;
+
+    border-radius: 3px;
+
+    &:hover {
+        background-color: var(--accent-color);
+    }
 }
 
 li {

@@ -3,127 +3,137 @@ import slides from "/slider/slides.js"
 
 const mainContainer = document.querySelector("#slide")
 
+let interval
+
 function createSlider() {
-    const c = document.createElement("div")
-    c.className = "container"
+  const c = document.createElement("div")
+  c.className = "container"
+
+  // controll buttons
+  const btnCotnainer = document.createElement("div")
+  btnCotnainer.className = "buttons"
+  let buttons = []
+  let elements = []
+  let indexRef = { value: 0 }
+
+  for (let i = 0; i < slides.length; i++) {
+    const slide = slides[i]
+
+    // slides
+    const container = document.createElement("div")
+    container.className = "slide"
+    container.style.backgroundImage = slide.img
+
+    container.addEventListener("mouseenter", () => {
+      clearInterval(interval)
+    })
+    container.addEventListener("mouseleave", () => {
+      interval = setInterval(() => {
+        indexRef.value++
+        if (indexRef.value > elements.length - 1) indexRef.value = 0
+        updateClasses(elements, buttons, indexRef.value)
+      }, 10000)
+    })
+
+    const title = document.createElement("h2")
+    title.textContent = slide.title
+
+    const subtitle = document.createElement("h3")
+    subtitle.textContent = slide.subtitle ?? ""
+
+    const button = document.createElement("button")
+    button.className = "btn"
+    button.textContent = slide.button
+
+    container.append(title, subtitle, button)
+    elements.push(container)
 
     // controll buttons
-    const btnCotnainer = document.createElement("div")
-    btnCotnainer.className = "buttons"
-    let buttons = []
-    let elements = []
-    let indexRef = { value: 0 }
+    const btn = document.createElement("button")
+    buttons.push(btn)
 
-    for (let i = 0; i < slides.length; i++) {
-        const slide = slides[i];
+    const back = document.createElement("img")
+    const forward = document.createElement("img")
+    back.className = "back"
+    forward.className = "forward"
+    back.src = "/assets/icons/controls/back.png"
+    forward.src = "/assets/icons/controls/back.png"
 
-        // slides
-        const container = document.createElement("div")
-        container.className = "slide"
-        container.style.backgroundImage = slide.img
+    // append to main container
+    c.append(back, forward)
 
-        const title = document.createElement("h2")
-        title.textContent = slide.title
+    indexRef.value = i
 
-        const subtitle = document.createElement("h3")
-        subtitle.textContent = slide.subtitle ?? ""
+    back.addEventListener("click", () => {
+      indexRef.value--
+      if (indexRef.value < 0) indexRef.value = elements.length - 1
 
-        const button = document.createElement("button")
-        button.textContent = slide.button
+      updateClasses(elements, buttons, indexRef.value)
+    })
+    forward.addEventListener("click", () => {
+      indexRef.value++
+      if (indexRef.value > elements.length - 1) indexRef.value = 0
 
-        container.append(title, subtitle, button)
-        elements.push(container)
+      updateClasses(elements, buttons, indexRef.value)
+    })
 
-        // controll buttons
-        const btn = document.createElement("button")
-        buttons.push(btn)
+    btn.addEventListener("click", () => {
+      indexRef.value = i
 
-        const back = document.createElement("img")
-        const forward = document.createElement("img")
-        back.className = "back"
-        forward.className = "forward"
-        back.src = "/assets/icons/controls/back.png"
-        forward.src = "/assets/icons/controls/back.png"
+      updateClasses(elements, buttons, indexRef.value)
+    })
 
-        // append to main container
-        c.append(back, forward)
+    btnCotnainer.appendChild(btn)
+    c.append(btnCotnainer, container)
+  }
 
+  // init
+  indexRef.value = 0
+  initialisation(elements, buttons, indexRef.value)
 
-        indexRef.value = i
+  mainContainer.insertBefore(c, mainContainer.firstChild)
 
-        back.addEventListener("click", () => {
-            indexRef.value--
-            if (indexRef.value < 0) indexRef.value = elements.length - 1
-
-            updateClasses(elements, buttons, indexRef.value)
-        })
-        forward.addEventListener("click", () => {
-            indexRef.value++
-            if (indexRef.value > elements.length - 1) indexRef.value = 0
-
-            updateClasses(elements, buttons, indexRef.value)
-        })
-
-        btn.addEventListener("click", () => {
-            indexRef.value = i
-
-            updateClasses(elements, buttons, indexRef.value)
-        })
-
-        btnCotnainer.appendChild(btn)
-        c.append(btnCotnainer, container)
-    }
-
-
-    // init
-    indexRef.value = 0
-    initialisation(elements, buttons, indexRef.value)
-
-
-    mainContainer.insertBefore(c, mainContainer.firstChild)
+  interval = setInterval(() => {
+    indexRef.value++
+    if (indexRef.value > elements.length - 1) indexRef.value = 0
+    updateClasses(elements, buttons, indexRef.value)
+  }, 3000)
 }
 
 function initialisation(elements, buttons, index) {
-    const { prev, curr, next } = slider(buttons, index)
-    const { prev: p, curr: c, next: n } = slider(elements, index)
+  const { prev, curr, next } = slider(buttons, index)
+  const { prev: p, curr: c, next: n } = slider(elements, index)
 
-    prev.classList.add("prev")
-    curr.classList.add("curr")
-    next.classList.add("next")
+  prev.classList.add("prev")
+  curr.classList.add("curr")
+  next.classList.add("next")
 
-    p.classList.add("prev")
-    c.classList.add("curr")
-    n.classList.add("next")
-
+  p.classList.add("prev")
+  c.classList.add("curr")
+  n.classList.add("next")
 }
 function updateClasses(elements, buttons, index) {
+  const { prev, curr, next } = slider(buttons, index)
+  const { prev: p, curr: c, next: n } = slider(elements, index)
 
-    const { prev, curr, next } = slider(buttons, index)
-    const { prev: p, curr: c, next: n } = slider(elements, index)
+  for (let j = 0; j < elements.length; j++) {
+    const el = elements[j]
+    el.classList.remove("prev", "curr", "next")
 
-    for (let j = 0; j < elements.length; j++) {
-        const el = elements[j];
-        el.classList.remove("prev", "curr", "next")
+    if (el === p) el.classList.add("prev")
+    if (el === c) el.classList.add("curr")
+    if (el === n) el.classList.add("next")
+  }
+  for (let k = 0; k < buttons.length; k++) {
+    const el = buttons[k]
+    el.classList.remove("prev", "curr", "next")
 
-        if (el === p) el.classList.add("prev")
-        if (el === c) el.classList.add("curr")
-        if (el === n) el.classList.add("next")
-
-    }
-    for (let k = 0; k < buttons.length; k++) {
-        const el = buttons[k];
-        el.classList.remove("prev", "curr", "next")
-
-
-        if (el === prev) el.classList.add("prev")
-        if (el === curr) el.classList.add("curr")
-        if (el === next) el.classList.add("next")
-
-    }
-
+    if (el === prev) el.classList.add("prev")
+    if (el === curr) el.classList.add("curr")
+    if (el === next) el.classList.add("next")
+  }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    createSlider()
-
+  createSlider()
 })
